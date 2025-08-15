@@ -86,4 +86,3 @@ This project is open-source and available under the **MIT License**.
 
 ---
 
-Feel free to let me know if you’d like to add badges (e.g. “Made with JS”) or embed a demo GIF—whatever makes your project stand out!
