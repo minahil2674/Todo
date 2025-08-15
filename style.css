@@ -1,0 +1,455 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling with Animated Background */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #8E44AD); /* Awesome color combination */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Smooth background animation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #2c3e50; /* Dark text for contrast */
+    overflow: hidden; /* Prevent scrollbars from background animation */
+}
+
+/* Keyframe for background gradient animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Main Container */
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    padding: 35px;
+    border-radius: 18px; /* More rounded corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+    width: 100%;
+    max-width: 550px; /* Slightly wider max-width */
+    display: flex;
+    flex-direction: column;
+    gap: 28px; /* Increased space between sections */
+    position: relative; /* For z-index */
+    z-index: 1; /* Ensure container is above background animation */
+}
+
+/* Heading */
+h1 {
+    font-size: 2.8rem; /* Larger heading */
+    font-weight: 700;
+    text-align: center;
+    color: #34495e; /* Darker blue-gray for heading */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    gap: 12px; /* Increased gap */
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 14px 18px; /* More padding */
+    border: 1px solid #c8d6e5; /* Softer border */
+    border-radius: 10px; /* More rounded */
+    font-size: 1.1rem; /* Larger font */
+    color: #333;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#taskInput:focus {
+    outline: none;
+    border-color: #4CAF50; /* Primary color on focus */
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3); /* Vibrant focus shadow */
+}
+
+/* Buttons General Styling */
+.btn {
+    padding: 14px 22px; /* Consistent padding */
+    border: none;
+    border-radius: 10px; /* More rounded */
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add Task Button */
+.add-task-btn {
+    background-color: #4CAF50; /* Primary green */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px; /* Match general btn padding */
+    font-size: 1.05rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+}
+
+.add-task-btn:hover {
+    background-color: #43a047; /* Darker green on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+}
+
+.add-task-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Task List Styling */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 450px; /* Slightly taller scrollable list */
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08); /* More defined inner shadow */
+}
+
+/* Custom Scrollbar */
+.task-list::-webkit-scrollbar {
+    width: 10px;
+}
+.task-list::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+.task-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Individual Task Item */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px; /* More padding */
+    border-bottom: 1px solid #e0e0e0; /* Softer divider */
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    /* Animation for new task entry */
+    animation: fadeInSlideUp 0.4s ease-out forwards;
+}
+
+/* Keyframe for task entry animation */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.task-item:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.01); /* Subtle grow on hover */
+}
+
+.task-item:active {
+    transform: scale(0.99); /* Slight shrink on click */
+}
+
+.task-text {
+    flex-grow: 1;
+    font-size: 1.15rem; /* Slightly larger task text */
+    color: #34495e;
+    cursor: pointer;
+    padding-right: 15px; /* More space */
+    line-height: 1.4; /* Better readability */
+}
+
+/* Completed Task Styling */
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #95a5a6;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Task Actions (Tick/Edit/Delete Buttons) */
+.task-actions {
+    display: flex;
+    gap: 10px; /* Increased gap between action buttons */
+}
+
+.task-action-btn {
+    background: none;
+    border: none;
+    padding: 10px; /* Larger touch target */
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.08); /* More visible hover */
+    transform: scale(1.1); /* Slight pop on hover */
+}
+
+.task-action-btn:active {
+    transform: scale(0.95); /* Shrink on click */
+}
+
+/* SVG Icon Styling */
+.task-action-btn svg {
+    width: 22px; /* Slightly larger icons */
+    height: 22px;
+}
+
+.icon-tick {
+    color: #3498db; /* Blue for incomplete tick */
+    transition: color 0.3s ease;
+}
+
+.task-item.completed .icon-tick {
+    color: #27ae60; /* Vibrant green tick for completed tasks */
+}
+
+.icon-edit {
+    color: #27ae60; /* Green for edit */
+}
+
+.icon-delete {
+    color: #e74c3c; /* Red for delete */
+}
+
+/* Filter Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px; /* Increased gap */
+    margin-top: 25px;
+}
+
+.filter-btn {
+    background-color: #e0e0e0; /* Light gray */
+    color: #555; /* Darker text */
+    flex-grow: 1;
+}
+
+.filter-btn:hover {
+    background-color: #c0c0c0; /* Medium gray on hover */
+}
+
+.filter-btn.active-filter {
+    background-color: #4CAF50; /* Primary green when active */
+    color: white;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.filter-btn.active-filter:hover {
+    background-color: #43a047;
+}
+
+.btn-clear {
+    background-color: #e74c3c; /* Red */
+    color: white;
+}
+
+.btn-clear:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Modal Styling (for confirmation dialogs) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Ensure it's on top of everything */
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 450px; /* Slightly larger modal */
+    width: 90%;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content p {
+    font-size: 1.3rem; /* Larger text */
+    margin-bottom: 30px; /* More space */
+    color: #333;
+    font-weight: 600;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* More space between buttons */
+}
+
+.modal-buttons .btn {
+    padding: 12px 30px; /* Larger buttons */
+    font-size: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-buttons .btn-confirm {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.modal-buttons .btn-confirm:hover {
+    background-color: #c0392b;
+}
+
+.modal-buttons .btn-cancel {
+    background-color: #bdc3c7;
+    color: #34495e;
+}
+
+.modal-buttons .btn-cancel:hover {
+    background-color: #95a5a6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 25px;
+        margin: 10px;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .input-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .add-task-btn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px 18px;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px; /* Smaller gap for wrapped buttons */
+    }
+
+    .btn {
+        flex-basis: 48%; /* Two buttons per row */
+        margin-bottom: 5px;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .filter-btn {
+        flex-basis: 30%; /* Three filter buttons per row */
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .task-text {
+        width: 100%;
+        padding-right: 0;
+        font-size: 1rem;
+    }
+
+    .task-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .task-action-btn svg {
+        width: 18px; /* Smaller icons on mobile */
+        height: 18px;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+
+    .modal-content p {
+        font-size: 1.1rem;
+    }
+
+    .modal-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
